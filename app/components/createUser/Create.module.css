@@ -1,0 +1,50 @@
+.CreateContainer {
+    /* background-color: rgb(100, 51, 51); */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+.CreateContainer h1{
+    font-size: 2rem;
+    color:  rgb(10, 33, 53);
+}
+.backBtn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: rgb(9, 94, 9);
+    color: white;
+}
+
+.createForm {
+    border-radius: 12px;
+    background-color: rgb(10, 33, 53);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    color: white;
+}
+
+.createForm input {
+    width: 100%;
+    border: 1px solid gray;
+    outline: none;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.createForm input:focus {
+    border-color: rgb(137, 206, 137);
+}
+
+.createForm button {
+    background-color: green;
+}
+.inputError{
+color: red;
+font-size: 12px;
+}
