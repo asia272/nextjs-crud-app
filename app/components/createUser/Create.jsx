@@ -3,10 +3,11 @@ import Link from 'next/link'
 import styles from "./Create.module.css"
 import { useForm } from "react-hook-form";
 import { createUser } from '../../actions/createUser';
+import { useRouter } from "next/navigation";
 
 
 const Create = () => {
-
+const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -15,18 +16,17 @@ const Create = () => {
     } = useForm();
 
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
 
         const res = await createUser(data) 
 
         if (res.success) {
-            alert("user create successfully")
+            alert(res.message)
             reset()
+            router.push("/")
         }else{
             alert(res.message)
         }
-
-
     };
 
 

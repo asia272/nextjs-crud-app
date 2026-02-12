@@ -7,10 +7,9 @@ export async function createUser(data) {
   try {
     await connectDb();
     await User.create(data);
-
-    return { success: true };
+    return { success: true , message:"User create successfully"};
   } catch (error) {
-    // Duplicate email error
+
     if (error.code === 11000) {
       return {
         success: false,

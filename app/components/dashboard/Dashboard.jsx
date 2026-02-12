@@ -1,21 +1,39 @@
+
 import Link from "next/link";
 import styles from "./Dashboard.module.css";
 import { getUsers } from "../../actions/getUsers";
 
+
 const Dashboard = async () => {
-  const allUsers = await getUsers();
+
+  let allUsers = [];
+
+
+  const res = await getUsers();
+
+  if (res.success) {
+    allUsers = res.users
+    console.log(res.users)
+  } else {
+    alert(res.message)
+  }
+
+
 
   return (
     <div className={styles.dashboardContainer}>
       <h1>Main Dashboard to store all Users</h1>
 
-      {allUsers.map((user) => (
+      {allUsers && allUsers.map((user) => (
         <div key={user._id} className={styles.userCard}>
           <p>Name: {user.name}</p>
           <p>Email: {user.email}</p>
-          <button className={styles.viewBtn}>
-            <Link href={`/user/${user._id}`} >View Detail </Link>
-          </button>
+
+          <Link href={`/user/${user._id}`} >
+
+            <button className={styles.viewBtn}>  View Detail </button>
+          </Link>
+
 
         </div>
       ))}
