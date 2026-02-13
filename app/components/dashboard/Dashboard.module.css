@@ -47,7 +47,10 @@
     text-decoration: none;
     transition: background-color 0.2s, transform 0.2s;
 }
-
+.userImg{
+    height: 100px;
+    width: 200px;
+}
 .createBtn:hover {
     background-color: darkgreen;
     transform: scale(1.05);

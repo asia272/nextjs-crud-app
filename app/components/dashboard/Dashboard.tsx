@@ -26,6 +26,7 @@ const Dashboard = async () => {
 
       {allUsers && allUsers.map((user) => (
         <div key={user._id} className={styles.userCard}>
+          <img src={user?.img} alt="user photo" className={styles.userImg} />
           <p>Name: {user.name}</p>
           <p>Email: {user.email}</p>
 

@@ -8,7 +8,8 @@ import { useRouter } from "next/navigation";
 interface CreateUserFormType {
     name: string,
     age: number,
-    email: string
+    email: string,
+
 }
 
 
@@ -21,7 +22,7 @@ const Create = () => {
         formState: { errors },
     } = useForm<CreateUserFormType>();
 
-    const onSubmit = async (data:CreateUserFormType) => {
+    const onSubmit = async (data: CreateUserFormType) => {
         // console.log(data);
 
 
@@ -33,6 +34,7 @@ const Create = () => {
             router.push("/")
         } else {
             alert(res.message)
+            
         }
     };
 
