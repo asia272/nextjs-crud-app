@@ -30,11 +30,8 @@ const Dashboard = async () => {
           <p>Email: {user.email}</p>
 
           <Link href={`/user/${user._id}`} >
-
             <button className={styles.viewBtn}>  View Detail </button>
           </Link>
-
-
         </div>
       ))}
 

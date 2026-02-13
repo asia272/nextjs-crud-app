@@ -1,7 +1,7 @@
 import { getUserById } from '../../actions/getUserById';
 import ViewUser from '../../components/viewUser/ViewUser';
 
-const page = async ({ params }) => {
+const page = async ({ params }:any) => {
   const { id } = await params;
 
   let user = null;
@@ -14,13 +14,9 @@ const page = async ({ params }) => {
     console.log("something wrong")
 
   }
-
   //  convert Mongo doc → plain object
-  const plainUser = JSON.parse(JSON.stringify(user));
-
-  return <ViewUser plainUser={plainUser} />;
-
-
+  user = JSON.parse(JSON.stringify(user));
+  return <ViewUser user={user} />;
 }
 
 export default page

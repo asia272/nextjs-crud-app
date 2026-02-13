@@ -6,21 +6,33 @@ import styles from "./ViewUser.module.css";
 import { useState } from "react";
 import { updateUser } from "../../actions/updateUser";
 
-const ViewUser = ({ plainUser }) => {
-  let user = plainUser;
+
+interface UserType {
+  _id:string,
+  name: string,
+  age: number,
+  email: string
+}
+interface ViewUserProps {
+  user: UserType;
+}
+
+
+const ViewUser = ( {user}: ViewUserProps ) => {
+
   const [isModal, setIsModal] = useState(false);
-  const [newName, setNewName] = useState(user?.name || "");
-  const [newAge, setNewAge] = useState(user?.age || "");
+  const [newName, setNewName] = useState<string>(user?.name) || "";
+  const [newAge, setNewAge] = useState <number>(user?.age);
   const router = useRouter();
 
   //delete
-  const remove = async (id) => {
+  const remove = async (id:string) => {
     await deleteUser(id);
     alert("User deleted successfully");
     router.push("/"); // client navigation
   };
   //update
-  const update = async (id) => {
+  const update = async (id:string) => {
     const res = await updateUser(id, {
       name: newName,
       age: newAge
@@ -78,7 +90,7 @@ const ViewUser = ({ plainUser }) => {
             <input
               type="number"
               value={newAge}
-              onChange={(e) => setNewAge(e.target.value)}
+              onChange={(e) => setNewAge(Number(e.target.value))}
               className={styles.input}
               placeholder="Enter new age"
             />

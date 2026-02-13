@@ -5,26 +5,33 @@ import { useForm } from "react-hook-form";
 import { createUser } from '../../actions/createUser';
 import { useRouter } from "next/navigation";
 
+interface CreateUserFormType {
+    name: string,
+    age: number,
+    email: string
+}
+
 
 const Create = () => {
-const router = useRouter()
+    const router = useRouter()
     const {
         register,
         handleSubmit,
         reset,
         formState: { errors },
-    } = useForm();
+    } = useForm<CreateUserFormType>();
 
-    const onSubmit = async (data) => {
+    const onSubmit = async (data:CreateUserFormType) => {
         // console.log(data);
 
-        const res = await createUser(data) 
+
+        const res = await createUser(data)
 
         if (res.success) {
             alert(res.message)
             reset()
             router.push("/")
-        }else{
+        } else {
             alert(res.message)
         }
     };
@@ -46,7 +53,7 @@ const router = useRouter()
                 </div>
                 <div>
                     <label htmlFor="age">Age:</label>
-                    <input type="text" placeholder='age' id='age'
+                    <input type="number" placeholder='age' id='age'
                         {...register("age", { required: "Age is required" })}
                     />
                     {errors.age && <p className={styles.inputError}>{errors.age.message}</p>}
